@@ -1,5 +1,6 @@
 package com.spring.crudprac.model;
 
+import com.spring.crudprac.dto.PostDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,11 +31,11 @@ public class Posting {
     @Column(nullable = false)
     private String description;
 
-    public Posting(String username, String password, String title, String description) {
-        this.username = username;
-        this.password = password;
-        this.title = title;
-        this.description = description;
+    public Posting(PostDto postDto) {
+        this.username = postDto.getUsername();
+        this.password = postDto.getPassword();
+        this.title = postDto.getTitle();
+        this.description = postDto.getDescription();
 
     }
 }

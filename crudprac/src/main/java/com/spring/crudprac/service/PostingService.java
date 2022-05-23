@@ -6,6 +6,8 @@ import com.spring.crudprac.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostingService {
     private final PostRepository postRepository;
@@ -19,5 +21,9 @@ public class PostingService {
         // 요청받은 DTO 로 DB에 저장할 객체 만들기
         Posting posting = new Posting(postDto);
         postRepository.save(posting);
+    }
+
+    public List<Posting> postview() {
+        return postRepository.findAll();
     }
 }

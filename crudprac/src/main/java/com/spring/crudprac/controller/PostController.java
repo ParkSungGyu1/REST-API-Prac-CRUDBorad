@@ -53,5 +53,13 @@ public class PostController {
         return passwordCheckDto;
     }
 
+    @PutMapping("/post/detail/change")
+    @ResponseBody
+    public Posting changedetail(@RequestBody Posting posting){
+        Posting posting1 = postingService.changedetail(posting);
+
+        return posting1;
+    }
+
 
 }

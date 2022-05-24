@@ -84,7 +84,31 @@
         function gotolist() {
             window.location.href = "/"
         }
-
+        function changepost(){
+            let id = $("#id").text()
+            let title = $("#title").val()
+            let username = $("#username").val()
+            let description = $("#description").val()
+            let password = $("#password").val()
+            let jsonData = { // Body에 첨부할 json 데이터
+                "id":id,
+                "username":username,
+                "title":title,
+                "description":description,
+                "password":password
+            };
+            console.log(description)
+            $.ajax({
+                type: "PUT",
+                url: '/post/detail/change',
+                contentType: "application/json",
+                data: JSON.stringify(jsonData),
+                success: function (response) {
+                    alert("게시글이 수정 되었습니다.")
+                    window.location.href = "/post/detail?id="+id
+                }
+            })
+        }
         function passwordcheck() {
             let password = $("#password").val()
 
@@ -147,8 +171,8 @@
     <div class="mypost" id = "changediv">
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="name@example.com">
-            <label for="name">이름</label>
+            <input type="text" class="form-control" id="username" placeholder="name@example.com">
+            <label for="username">이름</label>
         </div>
 
         <div class="form-floating mb-3">
@@ -163,7 +187,7 @@
         </div>
 
         <div class="btngroup">
-            <button type="button" class="rcbtn" onclick="postwrite()">수정하기</button>
+            <button type="button" class="rcbtn" onclick="changepost()">수정하기</button>
         </div>
     </div>
 

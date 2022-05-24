@@ -43,4 +43,14 @@ public class PostingService {
             return 0;
         }
     }
+
+    public Posting changedetail(Posting posting) {
+        Posting posting1 = postRepository.findById(posting.getId())
+                .orElseThrow(() -> new NullPointerException("해당 아이디가 존재하지 않습니다."));
+        posting1.setTitle(posting.getTitle());
+        posting1.setDescription(posting.getDescription());
+        posting1.setUsername(posting.getUsername());
+        postRepository.save(posting1);
+        return posting1;
+    }
 }

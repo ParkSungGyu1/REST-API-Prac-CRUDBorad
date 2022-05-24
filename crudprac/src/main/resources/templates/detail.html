@@ -71,6 +71,9 @@
         }
 
     </style>
+    <script>
+
+    </script>
 </head>
 
 <body>
@@ -82,10 +85,10 @@
         <div class="quotegroup">
             <div class="mb-2 card">
                 <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>제목</p>
-                        <p>내용이 여기에 표시되고 말어잇~~~~ 두줄까지 한번 만들어보자구~~~</p>
-                        <footer class="blockquote-footer">작성자</footer>
+                    <blockquote th:each="lists : ${list}" class="blockquote mb-0">
+                        <p th:text = "${lists.title}"></p>
+                        <p th:text = "${lists.description}"></p>
+                        <footer th:text = "${lists.username}" class="blockquote-footer">작성자</footer>
                     </blockquote>
                 </div>
             </div>

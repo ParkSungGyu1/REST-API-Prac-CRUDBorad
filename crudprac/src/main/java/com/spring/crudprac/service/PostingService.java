@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostingService {
@@ -25,5 +26,10 @@ public class PostingService {
 
     public List<Posting> postview() {
         return postRepository.findAll();
+    }
+
+    public Posting getdetail(Long id) {
+        Optional<Posting> result = postRepository.findById(id);
+        return result.get();
     }
 }

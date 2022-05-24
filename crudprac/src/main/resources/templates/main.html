@@ -72,6 +72,16 @@
 
     </style>
     <script>
+        function detailview(id) {
+            $.ajax({
+                type: "GET",
+                url: '/post/detail?id='+id,
+                success: function (response) {
+                    window.location.href ='/post/detail?id='+id
+                }
+            })
+        }
+
          function postview() {
             $.ajax({
                 type: "GET",
@@ -144,7 +154,7 @@
 
 
         <div class="mb-2 card" th:each="post : ${posts}">
-            <div class="card-body">
+            <div th:attr="onclick=|detailview('${post.id}')|" class="card-body">
                 <blockquote class="blockquote mb-0">
                     <p th:text = "${post.title}"></p>
                     <footer class="blockquote-footer" th:text = "${post.username}"></footer>

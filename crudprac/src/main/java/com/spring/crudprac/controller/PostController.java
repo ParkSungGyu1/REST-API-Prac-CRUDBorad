@@ -61,5 +61,10 @@ public class PostController {
         return posting1;
     }
 
+    @DeleteMapping("/post/detail/delete")
+    @ResponseBody
+    public void deletedetail(@RequestBody Posting posting){
+        postingService.deletedetail(posting);
+    }
 
 }

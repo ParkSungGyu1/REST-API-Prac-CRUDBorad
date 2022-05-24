@@ -53,4 +53,10 @@ public class PostingService {
         postRepository.save(posting1);
         return posting1;
     }
+
+    public void deletedetail(Posting posting) {
+        postRepository.delete(
+                postRepository.findById(posting.getId()).orElseThrow(() -> new NullPointerException("해당 아이디가 존재하지 않습니다."))
+        );
+    }
 }

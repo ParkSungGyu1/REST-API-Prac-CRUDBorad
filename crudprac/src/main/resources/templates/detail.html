@@ -77,7 +77,9 @@
         #changediv{
             display: none;
         }
-
+        #changediv2{
+            display: none;
+        }
     </style>
     <script>
 
@@ -132,6 +134,51 @@
                 }
             })
         }
+
+        function passwordcheck2() {
+            let password = $("#password").val()
+
+            let id = $("#id").text()
+            let jsonData = { // Body에 첨부할 json 데이터
+                "id":id,
+                "password":password,
+                "result":1
+            };
+            $.ajax({
+                type: "POST",
+                url: '/post/detail/password',
+                contentType: "application/json",
+                data: JSON.stringify(jsonData),
+                success: function (response) {
+                    if(response["result"] == 1){
+                        $("#changediv2").show();
+                    }else{
+                        alert("비밀번호가 틀립니다.")
+                    }
+                }
+            })
+        }
+        function deletepost(){
+            let password = $("#password").val()
+            let id = $("#id").text()
+            let jsonData = { // Body에 첨부할 json 데이터
+                "id":id,
+                "password":password,
+                "result":1
+            };
+
+            $.ajax({
+                type: "DELETE",
+                url: '/post/detail/delete',
+                contentType: "application/json",
+                data: JSON.stringify(jsonData),
+                success: function (response) {
+                        alert("성공적으로 삭제 되었습니다.")
+                        window.location.href = "/"
+
+                    }
+            })
+        }
     </script>
 </head>
 
@@ -162,7 +209,7 @@
         <div class="btngroup">
             <button type="button" onclick="gotolist()" class="rcbtn">목록</button>
             <button type="button" onclick="passwordcheck()" class="rcbtn">수정</button>
-            <button type="button" class="rcbtn">삭제</button>
+            <button type="button" onclick="passwordcheck2()" class="rcbtn">삭제</button>
 
         </div>
 
@@ -191,6 +238,11 @@
         </div>
     </div>
 
+    <div class="mypost" id = "changediv2">
+        <div class="btngroup">
+            <button type="button" class="rcbtn" onclick="deletepost()">정말로 삭제하시겠습니까?</button>
+        </div>
+    </div>
 
 </div>
 </body>

@@ -32,4 +32,15 @@ public class PostingService {
         Optional<Posting> result = postRepository.findById(id);
         return result.get();
     }
+
+    public int passwordcheck(Long id, String password) {
+        Optional<Posting>optional = postRepository.findById(id);
+        Posting posting = optional.get();
+        String realpassword = posting.getPassword();
+        if(realpassword.equals(password)){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 }

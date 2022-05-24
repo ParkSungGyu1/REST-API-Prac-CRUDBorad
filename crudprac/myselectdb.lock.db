@@ -1,6 +1,6 @@
 #FileLock
-#Tue May 24 09:50:15 KST 2022
+#Tue May 24 11:15:30 KST 2022
 hostName=DESKTOP-NCLI90C
-id=180f38b00ef34d39a1f37e4250a2ad19577a368889a
+id=180f3d90db22a15a8f2514b64dabd6c470b7b0eb28f
 method=file
-server=192.168.55.86\:55069
+server=192.168.55.86\:52584

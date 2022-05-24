@@ -23,6 +23,13 @@ public class PostController {
     }
 
     @GetMapping("/")
+    public String home(Model model){
+        List<Posting> posts = postingService.postview();
+        model.addAttribute("posts",posts);
+        return "main";
+    }
+
+    @GetMapping("/post")
     public String mainview(Model model){
 
         List<Posting> posts = postingService.postview();
@@ -35,7 +42,7 @@ public class PostController {
     @PostMapping("/post/write")
     public String postwrite(@RequestBody PostDto postDto){
         postingService.postwrite(postDto);
-        return "redirect:main";
+        return "main";
     }
 
     @GetMapping("/post/detail")

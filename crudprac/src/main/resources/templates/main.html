@@ -72,6 +72,7 @@
 
     </style>
     <script>
+
         function detailview(id) {
             $.ajax({
                 type: "GET",
@@ -85,8 +86,8 @@
          function postview() {
             $.ajax({
                 type: "GET",
-                url: '/',
-                success: function (response) {
+                url: '/post',
+                success: function (response) {)
                     window.location.reload()
                 }
             })
@@ -108,7 +109,7 @@
                 contentType: "application/json",
                 data: JSON.stringify(jsonData),
                 success: function (response) {
-                    console.log("저장 완료")
+                    window.location.reload()
                 }
             })
         }
